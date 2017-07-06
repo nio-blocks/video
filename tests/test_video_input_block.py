@@ -1,10 +1,10 @@
 from nio.block.terminals import DEFAULT_TERMINAL
 from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
-from ..example_block import Example
+from ..video_input_block import VideoInput
 
 
-class TestExample(NIOBlockTestCase):
+class TestVideoInput(NIOBlockTestCase):
 
     def test_process_signals(self):
         """Signals pass through block unmodified."""
