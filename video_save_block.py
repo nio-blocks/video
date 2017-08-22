@@ -1,12 +1,10 @@
-from nio.block.base import Block
-from nio.signal.base import Signal
-from nio.types.dict import DictType
-from nio.util.discovery import discoverable
-from nio.properties import StringProperty, IntProperty, Property
-from nio.properties import VersionProperty
-import ast, cv2, numpy
+import ast
+import cv2
 
-@discoverable
+from nio.block.base import Block
+from nio.properties import StringProperty, IntProperty
+from nio.properties import VersionProperty
+
 class VideoSave(Block):
     '''
     Take in raw frames (numpy arrays) and save video to file, currently in mpeg format.

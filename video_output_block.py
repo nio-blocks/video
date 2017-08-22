@@ -1,13 +1,11 @@
-import numpy
 import cv2
-from nio.block.base import Block
-from nio.signal.base import Signal
-from nio.util.discovery import discoverable
-from nio.util.threading import spawn
-from nio.properties import StringProperty, BoolProperty, VersionProperty
 from threading import Event
 
-@discoverable
+from nio.block.base import Block
+from nio.signal.base import Signal
+from nio.util.threading import spawn
+from nio.properties import StringProperty, BoolProperty, VersionProperty
+
 class VideoOutput(Block):
     '''
     Open video source and output raw frames (numpy arrays)

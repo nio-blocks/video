@@ -5,13 +5,13 @@ from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
 
 
-class TestVideoOutput(NIOBlockTestCase):
+class TestVideoConvert(NIOBlockTestCase):
 
     def setUp(self):
         super().setUp()
         sys.modules['cv2'] = MagicMock()
-        from ..video_output_block import VideoOutput
-        global VideoOutput
+        from ..video_convert_block import VideoConvert
+        global VideoConvert
 
-    def test_video_output(self):
+    def test_video_convert(self):
         pass

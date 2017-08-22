@@ -1,13 +1,10 @@
-import numpy
 import cv2
 import io
 from enum import Enum
+
 from nio.block.base import Block
 from nio.signal.base import Signal
-from nio.util.discovery import discoverable
-from nio.util.threading import spawn
 from nio.properties import VersionProperty, SelectProperty
-from threading import Event
 
 class Extension(Enum):
     jpg = '.jpg'
@@ -16,7 +13,6 @@ class Extension(Enum):
     png = '.png'
     tiff = '.tif'
 
-@discoverable
 class VideoConvert(Block):
     '''
     Input raw CV frame (numpy arrays) and output converted frame
