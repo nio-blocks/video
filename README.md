@@ -1,25 +1,61 @@
-Example
-===========
-
-These are video blocks for n.io. Video_input_block takes video from the specified source, video_convert_block can convert individual frames to images, and video_save_block save the video to the file specified.
+VideoConvert
+============
+Convert individual frames to images.  Input raw CV frame (numpy arrays) and output converted frame.
 
 Properties
---------------
-None
+----------
+- **extension**: Type of image file to output.
 
-Dependencies
-----------------
-opencv 3 or greater
-numpy
+Inputs
+------
+- **default**: Any list of signals.
+
+Outputs
+-------
+- **default**: A signal containing the resulting image and the extension type.
 
 Commands
-----------------
-None
+--------
 
-Input
+VideoOutput
+===========
+Captures video stream from specified source and notifies the frames as signals.
+
+Properties
+----------
+- **frame_rate**: Frame rate of video stream.
+- **grayscale**: Convert colored video stream to grayscale.
+- **openOnStart**: Start capturing video stream when block starts (hidden property).
+- **source**: Where to find the streaming camera.
+
+Inputs
+------
+- **default**: Any list of signals.
+
+Outputs
 -------
-Any list of signals.
+- **default**: A signal with the individual captured frames.
 
-Output
----------
-Same list of signals as input.
+Commands
+--------
+
+VideoSave
+=========
+Save a video stream to a specified file.
+
+Properties
+----------
+- **filename**: File name to save video stream to.
+- **frame_rate**: Frame rate of video stream.
+- **frame_size**: Pixel size of the frame.
+
+Inputs
+------
+- **default**: Any list of signals.
+
+Outputs
+-------
+
+Commands
+--------
+
