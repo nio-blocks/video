@@ -15,8 +15,8 @@ class TestVideoSave(NIOBlockTestCase):
 
     def test_video_save(self):
         blk = VideoSave()
-        with patch(VideoSave.__module__ + '.cv2') as patch_cv2, patch(VideoSave.__module__ + '.ast') as patch_ast:
-
+        with patch(VideoSave.__module__ + '.cv2') as patch_cv2, \
+                patch(VideoSave.__module__ + '.ast') as patch_ast:
             patch_cv2.VideoWriter = MagicMock()
             patch_cv2.resize = MagicMock()
 
@@ -30,7 +30,7 @@ class TestVideoSave(NIOBlockTestCase):
             })
             blk.start()
             blk.process_signals([Signal({
-                'frame': [[1],[2]]
+                'frame': [[1], [2]]
             })])
 
             mock_video_file.assert_called_with(
@@ -39,6 +39,7 @@ class TestVideoSave(NIOBlockTestCase):
                 1,
                 patch_ast.literal_eval()
             )
-            mock_video_file.return_value.write.assert_called_with('resizeReturn')
+            mock_video_file.return_value.write.assert_called_with(
+                'resizeReturn')
 
             blk.stop()

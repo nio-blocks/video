@@ -26,9 +26,9 @@ class TestVideoConvert(NIOBlockTestCase):
             })
             blk.start()
             blk.process_signals([Signal({
-                'frame': [[1],[2]]
+                'frame': [[1], [2]]
             })])
-            mock_cv2_imencode.assert_called_with('.jpg', [[1],[2]])
+            mock_cv2_imencode.assert_called_with('.jpg', [[1], [2]])
             mock_bytesIO.return_value.write.assert_called_once_with(
                 mock_temp_image.tobytes())
             self.assert_num_signals_notified(1)

@@ -24,7 +24,7 @@ class VideoSave(Block):
         # then I could include setup info in the passed signal
         self.video_file = cv2.VideoWriter(
             self.filename(),
-            cv2.VideoWriter_fourcc('M','P','E','G'),
+            cv2.VideoWriter_fourcc('M', 'P', 'E', 'G'),
             self.fps(),
             ast.literal_eval(self.frame_size())
         )
@@ -46,7 +46,7 @@ class VideoSave(Block):
 
     def stop(self):
         """Not sure this is completely necessary"""
-        try:      
+        try:
             self.logger.debug('Halting VideoSave thread')
             cv2.destroyAllWindows()
         except:
