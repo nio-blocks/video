@@ -15,7 +15,7 @@ class VideoSave(Block):
     filename = StringProperty(title='Filename', default='file.mpg')
     frame_size = StringProperty(
         title='Frame Size (as tuple)', default='(640,480)')
-    fps = IntProperty(title='Frames per second', default=30)
+    frame_rate = IntProperty(title='Frames per second', default=30)
     version = VersionProperty('0.0.1')
 
     def configure(self, context):

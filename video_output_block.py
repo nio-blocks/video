@@ -7,7 +7,7 @@ from nio.block.base import Block
 from nio.signal.base import Signal
 from nio.util.threading import spawn
 from nio.properties import StringProperty, BoolProperty, VersionProperty, \
-    FloatProperty
+    IntProperty
 
 
 class VideoOutput(Block):
@@ -20,7 +20,7 @@ class VideoOutput(Block):
                                default=True,
                                visible=False)
     grayscale = BoolProperty(title='Convert to grayscale', default=False)
-    frame_rate = FloatProperty(title='Frame Rate', default=0)
+    frame_rate = IntProperty(title='Frames per second', default=30)
     version = VersionProperty('0.0.1')
     ratio = 17  # image scale ratio
 
