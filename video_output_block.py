@@ -30,7 +30,7 @@ class VideoOutput(Block):
         super().configure(context)
         self.camera = None
         if self.openOnStart():
-        	self._openSource()
+            self._openSource()
 
     def start(self):
         super().start()
@@ -72,7 +72,7 @@ class VideoOutput(Block):
                 self.camera = cv2.VideoCapture(source)
             self._is_broadcasting.set()
         except:
-        	self._is_broadcasting.clear()
+            self._is_broadcasting.clear()
         self.logger.debug('Opening source: {}'.format(
             source if source else 'Local Camera'))
 
