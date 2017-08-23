@@ -22,7 +22,6 @@ class VideoOutput(Block):
     grayscale = BoolProperty(title='Convert to grayscale', default=False)
     frame_rate = IntProperty(title='Frames per second', default=0)
     version = VersionProperty('0.0.1')
-    ratio = 17  # image scale ratio
 
     def __init__(self):
         super().__init__()
