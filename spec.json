@@ -1,0 +1,97 @@
+{
+  "nio/VideoConvert": {
+    "version": "0.0.1",
+    "description": "Convert individual frames to images.  Input raw CV frame (numpy arrays) and output converted frame.",
+    "properties": {
+      "extension": {
+        "title": "Image Extension",
+        "type": "SelectType",
+        "description": "Type of image file to output.",
+        "default": ".jpg"
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "A signal containing the resulting image and the extension type."
+      }
+    },
+    "commands": {}
+  },
+  "nio/VideoOutput": {
+    "version": "0.0.1",
+    "description": "Captures video stream from specified source and notifies the frames as signals.",
+    "properties": {
+      "frame_rate": {
+        "title": "Frames per second",
+        "type": "IntType",
+        "description": "Frame rate of video stream.",
+        "default": 0
+      },
+      "grayscale": {
+        "title": "Convert to grayscale",
+        "type": "BoolType",
+        "description": "Convert colored video stream to grayscale.",
+        "default": false
+      },
+      "openOnStart": {
+        "title": "Open source on start",
+        "type": "BoolType",
+        "description": "Start capturing video stream when block starts (hidden property).",
+        "default": true
+      },
+      "source": {
+        "title": "Video Source",
+        "type": "StringType",
+        "description": "Where to find the streaming camera.",
+        "default": ""
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "A signal with the individual captured frames."
+      }
+    },
+    "commands": {}
+  },
+  "nio/VideoSave": {
+    "version": "0.0.1",
+    "description": "Save a video stream to a specified file.",
+    "properties": {
+      "filename": {
+        "title": "Filename",
+        "type": "StringType",
+        "description": "File name to save video stream to.",
+        "default": []
+      },
+      "frame_rate": {
+        "title": "Frames per second",
+        "type": "IntType",
+        "description": "Frame rate of video stream.",
+        "default": 30
+      },
+      "frame_size": {
+        "title": "Frame Size (as tuple)",
+        "type": "StringType",
+        "description": "Pixel size of the frame.",
+        "default": "(640,480)"
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {},
+    "commands": {}
+  }
+}

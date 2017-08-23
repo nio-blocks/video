@@ -1,19 +1,42 @@
-from nio.block.terminals import DEFAULT_TERMINAL
+import sys
+from unittest.mock import patch, MagicMock
+
 from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
-from ..video_input_block import VideoInput
 
 
-class TestVideoInput(NIOBlockTestCase):
+class TestVideoOutput(NIOBlockTestCase):
 
-    def test_process_signals(self):
-        """Signals pass through block unmodified."""
-        blk = Example()
-        self.configure_block(blk, {})
-        blk.start()
-        blk.process_signals([Signal({"hello": "n.io"})])
-        blk.stop()
-        self.assert_num_signals_notified(1)
-        self.assertDictEqual(
-            self.last_notified[DEFAULT_TERMINAL][0].to_dict(),
-            {"hello": "n.io"})
+    def setUp(self):
+        super().setUp()
+        sys.modules['cv2'] = MagicMock()
+        from ..video_output_block import VideoOutput
+        global VideoOutput
+
+    def test_video_output(self):
+        blk = VideoOutput()
+        with patch(VideoOutput.__module__ + '.cv2') as patch_cv2:
+            # patch Event()? (self._is_broadcasting)
+
+            patch_cv2.VideoCapture = MagicMock()
+            patch_cv2.cvtColor = MagicMock()
+
+            mock_camera = patch_cv2.VideoCapture
+            mock_grayscale = patch_cv2.cvtColor
+
+            mock_camera.return_value.read.return_value = 'mckGrab', 'mckFrame'
+            mock_grayscale.return_value = 'grayscaleFrame'
+
+            self.configure_block(blk, {
+                'grayscale': True
+            })
+            blk.start()
+            blk.process_signals([Signal({})])  # is this necessary?
+
+            mock_grayscale.assert_called_with(
+                'mckFrame', patch_cv2.COLOR_BGR2GRAY)
+            self.assert_last_signal_notified(Signal({
+                'frame': 'grayscaleFrame'
+            }))
+
+            blk.stop()

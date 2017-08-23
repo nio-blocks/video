@@ -1,0 +1,17 @@
+{
+    "nio/VideoConvert": {
+    "language": "Python",
+    "version": "0.0.1",
+    "url": "git://github.com/nio-blocks/video.git"
+  },
+  "nio/VideoOutput": {
+    "language": "Python",
+    "version": "0.0.1",
+    "url": "git://github.com/nio-blocks/video.git"
+  },
+  "nio/VideoSave": {
+    "language": "Python",
+    "version": "0.0.1",
+    "url": "git://github.com/nio-blocks/video.git"
+  }
+}
