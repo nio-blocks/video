@@ -25,7 +25,7 @@ class VideoSave(Block):
         self.video_file = cv2.VideoWriter(
             self.filename(),
             cv2.VideoWriter_fourcc('M', 'P', 'E', 'G'),
-            self.fps(),
+            self.frame_rate(),
             ast.literal_eval(self.frame_size())
         )
 

@@ -30,7 +30,7 @@
         "title": "Frames per second",
         "type": "IntType",
         "description": "Frame rate of video stream.",
-        "default": 30
+        "default": 0
       },
       "grayscale": {
         "title": "Convert to grayscale",

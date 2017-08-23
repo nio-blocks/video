@@ -26,7 +26,7 @@ class TestVideoSave(NIOBlockTestCase):
 
             self.configure_block(blk, {
                 'filename': 'testFile',
-                'fps': 1,
+                'frame_rate': 1,
             })
             blk.start()
             blk.process_signals([Signal({
