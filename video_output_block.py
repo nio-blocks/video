@@ -1,8 +1,10 @@
-import numpy
 import cv2
+import io
+import base64
+from PIL import Image
+
 from threading import Event
 from time import sleep
-
 from nio.block.base import Block
 from nio.signal.base import Signal
 from nio.util.threading import spawn
@@ -61,8 +63,12 @@ class VideoOutput(Block):
             else:
                 if self.grayscale():
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-                self.notify_signals([Signal({'frame': frame})])
+                self.logger.debug('encoding frame')
+                img = Image.fromarray(frame)
+                img_buffer = io.BytesIO()
+                img.save(img_buffer, format='JPEG')
+                encoded = base64.b64encode(img_buffer.getvalue()).decode('utf-8')
+                self.notify_signals([Signal({'base64Image': encoded})])
 
     def _openSource(self):
         """ With no source, use attached camera """
