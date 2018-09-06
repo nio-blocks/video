@@ -3,14 +3,14 @@ import cv2
 from threading import Event
 from time import sleep
 
-from nio.block.base import Block
+from nio import GeneratorBlock
 from nio.signal.base import Signal
 from nio.util.threading import spawn
 from nio.properties import StringProperty, BoolProperty, VersionProperty, \
     IntProperty
 
 
-class VideoOutput(Block):
+class VideoOutput(GeneratorBlock):
     """
     Open video source and output raw frames (numpy arrays)
     """
