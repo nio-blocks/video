@@ -26,7 +26,7 @@
     "commands": {}
   },
   "nio/VideoOutput": {
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Captures video stream from specified source and notifies the frames as signals.",
     "categories": [
       "Machine Learning"

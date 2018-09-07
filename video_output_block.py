@@ -21,7 +21,7 @@ class VideoOutput(GeneratorBlock):
                                visible=False)
     grayscale = BoolProperty(title='Convert to grayscale', default=False)
     frame_rate = IntProperty(title='Frames per second', default=0)
-    version = VersionProperty('0.0.1')
+    version = VersionProperty("0.0.2")
 
     def __init__(self):
         super().__init__()
